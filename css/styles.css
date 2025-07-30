@@ -1,0 +1,422 @@
+/* 自定义字体和基础样式 */
+.minecraft-font {
+    font-family: 'Orbitron', 'JetBrains Mono', monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* 发光文字效果 */
+.glow-text {
+    text-shadow: 
+        0 0 5px rgba(147, 51, 234, 0.8),
+        0 0 10px rgba(147, 51, 234, 0.6),
+        0 0 15px rgba(147, 51, 234, 0.4),
+        0 0 20px rgba(147, 51, 234, 0.2);
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from {
+        text-shadow: 
+            0 0 5px rgba(147, 51, 234, 0.8),
+            0 0 10px rgba(147, 51, 234, 0.6),
+            0 0 15px rgba(147, 51, 234, 0.4),
+            0 0 20px rgba(147, 51, 234, 0.2);
+    }
+    to {
+        text-shadow: 
+            0 0 10px rgba(147, 51, 234, 1),
+            0 0 20px rgba(147, 51, 234, 0.8),
+            0 0 30px rgba(147, 51, 234, 0.6),
+            0 0 40px rgba(147, 51, 234, 0.4);
+    }
+}
+
+/* 像素发光效果 */
+.pixel-glow {
+    box-shadow: 
+        0 0 10px rgba(147, 51, 234, 0.6),
+        0 0 20px rgba(147, 51, 234, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+    animation: pixel-pulse 3s ease-in-out infinite;
+}
+
+@keyframes pixel-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(147, 51, 234, 0.6),
+            0 0 20px rgba(147, 51, 234, 0.4),
+            inset 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(147, 51, 234, 0.8),
+            0 0 40px rgba(147, 51, 234, 0.6),
+            inset 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* 慢脉冲动画 */
+.animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.02);
+    }
+}
+
+/* 导航链接样式 */
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #8b5cf6, #06b6d4);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover {
+    color: #8b5cf6;
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.nav-link:hover::before {
+    width: 80%;
+}
+
+/* 服务器IP卡片样式 */
+.server-ip-card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(139, 92, 246, 0.1));
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    animation: border-glow 3s ease-in-out infinite;
+}
+
+.server-ip-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #8b5cf6, #06b6d4, #ec4899, #8b5cf6);
+    background-size: 200% 200%;
+    border-radius: 0.75rem;
+    z-index: -1;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes border-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+    }
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Minecraft 按钮样式 */
+.minecraft-button {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.minecraft-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.minecraft-button:hover::before {
+    left: 100%;
+}
+
+.minecraft-button:active {
+    transform: scale(0.98);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* 游戏模式卡片样式 */
+.game-mode-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    height: 300px;
+}
+
+.game-mode-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.game-mode-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 
+        0 20px 40px rgba(139, 92, 246, 0.2),
+        0 0 30px rgba(139, 92, 246, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.game-mode-card:hover::before {
+    opacity: 1;
+}
+
+.game-mode-card:hover .pixel-glow {
+    box-shadow: 
+        0 0 20px rgba(147, 51, 234, 0.8),
+        0 0 40px rgba(147, 51, 234, 0.6),
+        inset 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* 特色功能卡片样式 */
+.feature-card {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(139, 92, 246, 0.1));
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.6);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.2);
+}
+
+/* 粒子背景 */
+#particles {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="%23ffffff" opacity="0.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="3s" repeatCount="indefinite"/></circle><circle cx="80" cy="40" r="1" fill="%238b5cf6" opacity="0.4"><animate attributeName="opacity" values="0.4;1;0.4" dur="4s" repeatCount="indefinite"/></circle><circle cx="50" cy="80" r="1" fill="%2306b6d4" opacity="0.3"><animate attributeName="opacity" values="0.3;1;0.3" dur="5s" repeatCount="indefinite"/></circle></svg>') repeat;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* 滚动平滑 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #8b5cf6, #06b6d4);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #7c3aed, #0891b2);
+}
+
+/* Toast 通知样式 */
+#toast {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+#toast.show {
+    transform: translateX(0);
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    .game-mode-card {
+        height: auto;
+        min-height: 250px;
+    }
+    
+    .glow-text {
+        font-size: 2.5rem;
+    }
+    
+    .minecraft-font {
+        letter-spacing: 1px;
+    }
+    
+    .server-ip-card {
+        margin: 1rem 0;
+    }
+    
+    .feature-card {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .glow-text {
+        font-size: 2rem;
+    }
+    
+    .nav-link {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* 移动端菜单样式 */
+#mobile-menu {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(139, 92, 246, 0.1));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+#mobile-menu a {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s ease;
+}
+
+#mobile-menu a:hover {
+    background: rgba(139, 92, 246, 0.1);
+    padding-left: 1.5rem;
+}
+
+#mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+/* 加载动画 */
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    animation: loading 1s linear infinite;
+}
+
+/* 进入动画 */
+.fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 图片优化 */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 性能优化 */
+* {
+    will-change: auto;
+}
+
+.game-mode-card,
+.feature-card,
+.minecraft-button {
+    will-change: transform;
+}
+
+/* 高对比度支持 */
+@media (prefers-contrast: high) {
+    .game-mode-card,
+    .feature-card {
+        border-width: 2px;
+    }
+    
+    .glow-text {
+        text-shadow: none;
+        color: #ffffff;
+    }
+}
+
+/* 减少动画支持 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmethystPvP - 顶级 Minecraft 服务器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="https://minecraft.wiki/images/thumb/f/f7/Amethyst_Cluster_JE2_BE1.png/32px-Amethyst_Cluster_JE2_BE1.png">
+</head>
+<body class="bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 text-white overflow-x-hidden">
+    <!-- 动态背景粒子 -->
+    <div id="particles" class="fixed inset-0 z-0"></div>
+    
+    <!-- 主要内容容器 -->
+    <div class="relative z-10">
+        <!-- 导航栏 -->
+        <nav class="fixed top-0 w-full z-50 bg-black bg-opacity-30 backdrop-blur-md border-b border-purple-500">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-cyan-400 rounded pixel-glow"></div>
+                        <h1 class="text-2xl font-bold minecraft-font glow-text">AmethystPvP</h1>
+                    </div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#home" class="nav-link">首页</a>
+                        <a href="#gamemodes" class="nav-link">游戏模式</a>
+                        <a href="#features" class="nav-link">特色功能</a>
+                        <a href="#join" class="nav-link">立即加入</a>
+                    </div>
+                    <button class="md:hidden text-white" id="mobile-menu-btn">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 英雄区域 -->
+        <section id="home" class="min-h-screen flex items-center justify-center relative">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20" style="background-image: url('images/amethyst_bg.webp')"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <div class="max-w-4xl mx-auto">
+                    <h1 class="text-6xl md:text-8xl font-black minecraft-font glow-text mb-6 animate-pulse-slow">
+                        Amethyst<span class="text-purple-400">PvP</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-cyan-200 font-mono">
+                        体验最刺激的 Minecraft PvP 战斗！加入我们的传奇服务器
+                    </p>
+                    <div class="bg-black bg-opacity-50 backdrop-blur-md rounded-xl p-6 mb-8 border border-purple-500 server-ip-card">
+                        <p class="text-sm text-gray-300 mb-2">服务器IP地址</p>
+                        <p class="text-3xl md:text-4xl font-bold minecraft-font text-yellow-400 glow-text" id="server-ip">
+                            amethystpvp.xyz
+                        </p>
+                        <button class="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-6 py-3 rounded-lg font-bold transition-all duration-300 transform hover:scale-105 minecraft-button" onclick="copyServerIP()">
+                            复制服务器IP
+                        </button>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#gamemodes" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 minecraft-button">
+                            探索游戏模式
+                        </a>
+                        <a href="#join" class="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 px-8 py-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 minecraft-button">
+                            立即加入游戏
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏模式区域 -->
+        <section id="gamemodes" class="py-20 relative">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 minecraft-font glow-text">
+                    游戏模式
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 职业战争系统 -->
+                    <div class="game-mode-card group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30 rounded-xl" style="background-image: url('images/pvp_arena.png')"></div>
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-orange-500 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">职业战争系统</h3>
+                            <p class="text-gray-300 mb-4">加入了商店的全新职业战争体验，选择你的职业，购买装备，在战场上称霸！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-red-600 rounded-full text-sm">战略</span>
+                                <span class="px-3 py-1 bg-orange-600 rounded-full text-sm">团队</span>
+                                <span class="px-3 py-1 bg-yellow-600 rounded-full text-sm">商店</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 水晶PVP -->
+                    <div class="game-mode-card group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30 rounded-xl" style="background-image: url('images/crystal_cave.png')"></div>
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6 2l6 6-6 6-6-6 6-6zm12 4l6 6-6 6-6-6 6-6z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">水晶PVP</h3>
+                            <p class="text-gray-300 mb-4">使用终界水晶进行激烈的PVP战斗，考验你的技术和反应速度！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-600 rounded-full text-sm">技术</span>
+                                <span class="px-3 py-1 bg-pink-600 rounded-full text-sm">爆炸</span>
+                                <span class="px-3 py-1 bg-indigo-600 rounded-full text-sm">快节奏</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 重锤PVP -->
+                    <div class="game-mode-card group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30 rounded-xl" style="background-image: url('images/server_lobby.png')"></div>
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-gray-500 to-gray-700 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                                    <circle cx="12" cy="12" r="4"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">重锤PVP</h3>
+                            <p class="text-gray-300 mb-4">使用重锤武器进行激烈对战，每一击都具有毁灭性的威力！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-600 rounded-full text-sm">力量</span>
+                                <span class="px-3 py-1 bg-red-600 rounded-full text-sm">重击</span>
+                                <span class="px-3 py-1 bg-yellow-600 rounded-full text-sm">毁灭</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 剑术FFA -->
+                    <div class="game-mode-card group">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-30 rounded-xl" style="background-image: url('images/sword_combat.jpg')"></div>
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4.4 11L12 3.4 19.6 11 12 18.6 4.4 11z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">剑术FFA</h3>
+                            <p class="text-gray-300 mb-4">自由对战模式，展示你的剑术技巧，在混乱中脱颖而出！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-600 rounded-full text-sm">剑术</span>
+                                <span class="px-3 py-1 bg-cyan-600 rounded-full text-sm">自由对战</span>
+                                <span class="px-3 py-1 bg-green-600 rounded-full text-sm">技巧</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 随机传送 -->
+                    <div class="game-mode-card group">
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">随机传送</h3>
+                            <p class="text-gray-300 mb-4">探索无限的世界，随机传送到神秘的地点，发现隐藏的宝藏！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-green-600 rounded-full text-sm">探索</span>
+                                <span class="px-3 py-1 bg-emerald-600 rounded-full text-sm">冒险</span>
+                                <span class="px-3 py-1 bg-teal-600 rounded-full text-sm">神秘</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 其他模式 -->
+                    <div class="game-mode-card group">
+                        <div class="relative z-10 p-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-500 rounded-lg mb-4 flex items-center justify-center pixel-glow">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 minecraft-font">更多模式</h3>
+                            <p class="text-gray-300 mb-4">我们不断更新新的游戏模式，为玩家带来全新的游戏体验！</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-violet-600 rounded-full text-sm">创新</span>
+                                <span class="px-3 py-1 bg-purple-600 rounded-full text-sm">更新</span>
+                                <span class="px-3 py-1 bg-pink-600 rounded-full text-sm">惊喜</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色功能区域 -->
+        <section id="features" class="py-20 bg-black bg-opacity-30">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-6xl font-bold text-center mb-16 minecraft-font glow-text">
+                    特色功能
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l2.09 6.26L20 8l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 8l5.91-.74L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">高性能服务器</h3>
+                        <p class="text-gray-300 text-sm">24/7在线，低延迟，流畅的游戏体验</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-lg mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 4h2v16h-2v-16zm-8 0h2v16h-2v-16zm4-2h2v20h-2v-20z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">公平竞技</h3>
+                        <p class="text-gray-300 text-sm">反作弊系统，确保公平的游戏环境</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-lg mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">活跃社区</h3>
+                        <p class="text-gray-300 text-sm">友好的玩家社区，专业的管理团队</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-lg mb-4 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l2.09 6.26L20 8l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 8l5.91-.74L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">定期更新</h3>
+                        <p class="text-gray-300 text-sm">持续更新内容，带来新鲜的游戏体验</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 加入游戏区域 -->
+        <section id="join" class="py-20 relative">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 minecraft-font glow-text">
+                    立即加入AmethystPvP
+                </h2>
+                <p class="text-xl mb-12 text-cyan-200">
+                    准备好体验最刺激的 Minecraft PvP 了吗？
+                </p>
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-black bg-opacity-50 backdrop-blur-md rounded-xl p-8 border border-purple-500 mb-8">
+                        <h3 class="text-2xl font-bold mb-6 minecraft-font">如何加入游戏</h3>
+                        <div class="space-y-4 text-left">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-sm font-bold">1</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-cyan-300">启动 Minecraft</h4>
+                                    <p class="text-gray-300">确保你的 Minecraft 版本支持我们的服务器</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-sm font-bold">2</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-cyan-300">点击多人游戏</h4>
+                                    <p class="text-gray-300">选择"多人游戏"选项进入服务器列表</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-sm font-bold">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-cyan-300">添加服务器</h4>
+                                    <p class="text-gray-300">输入服务器IP：<span class="font-mono text-yellow-400">amethystpvp.xyz</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                    <span class="text-sm font-bold">4</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-cyan-300">开始游戏</h4>
+                                    <p class="text-gray-300">双击服务器名称即可连接并开始游戏！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-12 py-4 rounded-lg font-bold text-xl transition-all duration-300 transform hover:scale-105 minecraft-button" onclick="copyServerIP()">
+                        复制服务器IP：amethystpvp.xyz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部信息 -->
+        <footer class="py-12 bg-black bg-opacity-50">
+            <div class="container mx-auto px-6 text-center">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-cyan-400 rounded pixel-glow"></div>
+                    <h3 class="text-2xl font-bold minecraft-font">AmethystPvP</h3>
+                </div>
+                <p class="text-gray-400 mb-4">© 2025 AmethystPvP. 为玩家提供最佳的 Minecraft PvP 体验。</p>
+                <p class="text-sm text-gray-500">服务器IP: <span class="text-yellow-400 font-mono">amethystpvp.xyz</span></p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div id="toast" class="fixed top-20 right-4 z-50 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300">
+        <div class="flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+            </svg>
+            <span>服务器IP已复制到剪贴板！</span>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
